@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<launch>
+
+  <!-- Load joint controller configurations from YAML file to parameter server -->
+  <rosparam file="$(find panda_moveit_config)/config/ros_controllers.yaml" command="load"  subst_value="true"/>
+
+  <!-- Load and start the controllers -->
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen"
+        args="panda_finger_joint1_controller
+              panda_finger_joint2_controller" />
+</launch>

@@ -1,0 +1,9 @@
+panda_finger_joint1_controller:
+    type: "effort_controllers/JointPositionController"
+    joint: panda_finger_joint1
+    pid: { p: 100, d: 10.0, i: 0, i_clamp: 1 }
+
+panda_finger_joint2_controller:
+    type: "effort_controllers/JointPositionController"
+    joint: panda_finger_joint2
+    pid: { p: 100, d: 20.0, i: 0, i_clamp: 1 }
