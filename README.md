@@ -1,1 +1,2 @@
-# drl_object_grasping
+# Object Grasping using Deep Reinforcement Learning and its Sim2Real transfer
+
