@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<launch>
+    <arg name="real_robot" default="false" doc="true: Real Robot, false: Simulated Robot"/>
+    <arg name="gui" default="false"/>
+    <arg name="rviz_gui" default="false"/>
+    <arg name="gazebo_gui" default="false"/>
+    <arg name="world_name" default="empty.world"/>
+    <arg name="load_gripper" default="true"/>
+    <arg name="use_gazebo_control" default="false"/>
+    <arg name="max_velocity_scale_factor" default="1.0" doc="Scale factor multiplied by maximum joint velocity value"/>
+    <arg name="server_port" default="50051"/>
+    <arg name="action_cycle_rate" default="25" doc="Rate at which new commands are published to the robot controller"/>
+    <arg name="reference_frame" default="base" doc="Reference frame with respect to which target and ee pose are given"/>
+    <arg name="rs_mode" default="only_robot" doc="Defines the working mode of the Robot Server, this influences the RS state content"/>
+
+    <include file="$(find load_rl_env)/launch/load_panda_sim.launch">
+        
+    </include>
+</launch>
