@@ -1,0 +1,3 @@
+<launch>
+    <node pkg="panda_interface" type="force_torque_listener.py" name="force_torque_listener" output="screen" />
+</launch>

@@ -1,0 +1,8 @@
+<launch>
+
+  <param name ="/use_sim_time" value="true"/>
+  
+  <node pkg="rqt_console" type="rqt_console" name="rqt_console"/>
+
+  <include file="$(find panda_moveit_config)/launch/demo_gazebo.launch" />
+</launch>

@@ -1,0 +1,92 @@
+<?xml version='1.0'?>
+<sdf version="1.4">
+  <model name="cylinder">
+    <pose>0 0 0.0375 0 0 0</pose>
+    <!-- <static>false</static> -->
+    <link name="link">
+      <inertial>
+        <mass>0.1</mass>
+        <inertia> <!-- inertias are tricky to compute -->
+          <!-- http://gazebosim.org/tutorials?tut=inertia&cat=build_robot -->
+          <ixx>0.00020833333</ixx> <!-- for a cylinder: ixx = 0.25 * mass * (3 * r^2 + h^2) -->
+          <ixy>0.0</ixy>         <!-- for a cylinder: ixy = 0 -->
+          <ixz>0.0</ixz>         <!-- for a cylinder: ixz = 0 -->
+          <iyy>0.00020833333</iyy> <!-- for a cylinder: iyy = 0.25 * mass * (3 * r^2 + h^2) -->
+          <iyz>0.0</iyz>         <!-- for a cylinder: iyz = 0 -->
+          <izz>0.00004166667</izz> <!-- for a cylinder: izz = 0.5 * mass * r^2 -->
+        </inertia>
+      </inertial>
+      <collision name="collision">
+        <geometry>
+          <cylinder>
+            <radius>0.025</radius>
+            <length>0.075</length>
+          </cylinder>
+        </geometry>
+        <surface>
+          <!--NOTE: Uses dynamic friction of brick on a wood surface
+          see https://www.engineeringtoolbox.com/friction-coefficients-d_778.html
+          -->
+          <friction>
+            <ode>
+              <mu>0.6</mu>
+              <mu2>0.6</mu2>
+              <fdir1>0 0 0</fdir1>
+              <slip1>0</slip1>
+              <slip2>0</slip2>
+            </ode>
+            <torsional>
+              <coefficient>1</coefficient>
+              <patch_radius>0</patch_radius>
+              <surface_radius>0</surface_radius>
+              <use_patch_radius>1</use_patch_radius>
+              <ode>
+                <slip>0</slip>
+              </ode>
+            </torsional>
+          </friction>
+          <bounce>
+            <restitution_coefficient>0</restitution_coefficient>
+            <threshold>1e+06</threshold>
+          </bounce>
+          <contact>
+            <collide_without_contact>0</collide_without_contact>
+            <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+            <collide_bitmask>1</collide_bitmask>
+            <ode>
+              <soft_cfm>0</soft_cfm>
+              <soft_erp>0.2</soft_erp>
+              <kp>1e+13</kp>
+              <kd>1</kd>
+              <max_vel>0</max_vel>
+              <min_depth>0.003</min_depth>
+            </ode>
+            <bullet>
+              <split_impulse>1</split_impulse>
+              <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+              <soft_cfm>0</soft_cfm>
+              <soft_erp>0.2</soft_erp>
+              <kp>1e+13</kp>
+              <kd>1</kd>
+            </bullet>
+          </contact>
+        </surface>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <cylinder>
+            <radius>0.025</radius>
+            <length>0.075</length>
+          </cylinder>
+        </geometry>
+        <material> <!-- Test cylinder material: Dark Blue, based on: http://gazebosim.org/tutorials?tut=color_model -->
+          <!-- KIT Green RGB: 0 150 130 ->  0 0.588 0.51 1-->
+          <ambient>0 0.588 0.51 1</ambient>
+          <diffuse>0 0.588 0.51 1</diffuse>
+          <specular>0 0 0 0</specular>
+          <emissive>0 0 0 1</emissive>
+        </material> <!-- End test cylinder material -->
+      </visual>
+    </link>
+  </model>
+</sdf>
